@@ -1,15 +1,15 @@
+# To use it with sshpass you must set some environment variables
 
-To use it with sshpass you must set some environment variables 
-
+```bash
 export SSHPASS='YourSecretPassword'
 export AUTOSSH_PATH='sshpass'
 export AUTOSSH_LOGFILE=/var/log/autossh/your_connection_log_file_path
-export AUTOSSH_PORT=45601
 export AUTOSSH_DEBUG=1
-autossh -- -e ssh -N -D 127.0.0.1:45600 username@hostname
+```
 
-
-
+```bash
+alias ssh='autossh -M0 -- -e /usr/local/bin/ssh'
+```
 
 
 autossh Version 1.4
@@ -30,7 +30,7 @@ Look at autossh.host for an example wrapper script.
 
 Usage
 -----
-	autossh -M <port>[:echo_port] [-f] [SSH OPTIONS]
+	autossh [-M <port>[:echo_port]] [-f] [SSH OPTIONS]
 
 Description
 -----------
@@ -90,7 +90,7 @@ autossh has only three arguments of its own:
 
  -f     Causes autossh to drop to the background before running ssh. The
         -f flag is stripped from arguments passed to ssh. Note that there
-        is a crucial a difference between the -f with autossh, and -f
+        is a crucial difference between the -f with autossh, and -f
         with ssh: when used with autossh, ssh will be *unable* to ask for
         passwords or passphrases. When -f is used, the "starting gate"
         time (see AUTOSSH_GATETIME) will be set to 0.
@@ -218,6 +218,19 @@ The following environment variables can be set:
 			    appropriates -M at some time. But because
 			    of this possible use, AUTOSSH_PORT overrides
 			    the -M flag.
+
+SSH Options
+------------------
+
+There are two particular OpenSSH options that are useful when using
+autossh:
+
+1) ExitOnForwardFailure=yes on the client side to make sure forwardings
+have succeeded when autossh assumes the connection is setup properly.
+
+2) ClientAliveInterval on the server side to make sure the listening
+socket is closed on the server side if the connection closes on the
+client side.
 
 Logging and Syslog
 ------------------
