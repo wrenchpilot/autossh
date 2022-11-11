@@ -1,3 +1,5 @@
+autossh
+
 # http://www.gnu.org/software/automake
 
 Makefile.in
@@ -8,6 +10,7 @@ Makefile.in
 /ylwrap
 .deps/
 .dirstamp
+*.o
 
 # http://www.gnu.org/software/autoconf
 
@@ -18,6 +21,7 @@ autom4te.cache
 /compile
 /config.cache
 /config.guess
+/config.h
 /config.h.in
 /config.log
 /config.status
