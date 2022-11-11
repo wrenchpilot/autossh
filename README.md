@@ -2,14 +2,13 @@
 * To use it with sshpass you must set some environment variables
 
 ```bash
-export SSHPASS='YourSecretPassword'
 export AUTOSSH_PATH='sshpass'
 export AUTOSSH_LOGFILE=/var/log/autossh/your_connection_log_file_path
 export AUTOSSH_DEBUG=1
 ```
 
 ```bash
-alias ssh='autossh -M0 -- -e /usr/local/bin/ssh'
+alias ssh='SSHPASS="YOUR_PASSWORD" autossh -M0 -- -e /usr/local/bin/ssh'
 ```
 
 
