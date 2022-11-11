@@ -1,4 +1,5 @@
-# To use it with sshpass you must set some environment variables
+# Usage
+* To use it with sshpass you must set some environment variables
 
 ```bash
 export SSHPASS='YourSecretPassword'
