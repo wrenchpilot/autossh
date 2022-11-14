@@ -8,7 +8,8 @@ export AUTOSSH_DEBUG=1
 ```
 
 ```bash
-alias ssh='SSHPASS="YOUR_PASSWORD" autossh -M0 -- -e /usr/local/bin/ssh'
+# Note `getpw()` is a local function to pull password from keychain
+alias ssh='autossh -M0 -- -p $(getpw 1) /usr/local/bin/ssh'
 ```
 
 
